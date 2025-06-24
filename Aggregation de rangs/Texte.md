@@ -2,17 +2,17 @@
 
 Bonjour Madame, bonjour Monsieur.
 
-Ce soir à 23h59, tous les lycéens de Terminale ayant des vœux en attente sur Parcoursup doivent les avoir classés. Et si Parcoursup a laissé 5 jours pour effectuer ce classement, ce n'est pas pour rien : c'est une étape qui est difficile et qui nécessite pas mal de réflexion.
+Il y a exactement deux semaines, à 23h59, tous les lycéens de Terminale ayant des vœux en attente sur Parcoursup devaient les avoir classés. Et si Parcoursup a laissé 5 jours pour effectuer ce classement, ce n'est pas pour rien : c'est une étape qui est difficile et qui nécessite pas mal de réflexion.
 
 Quand j'ai appris il y a quelques mois le caractère obligatoire de cette phase par rapport à l'année dernière, je me suis demandé quelle était la meilleure stratégie pour construire ce classement.
-En bon analyste, j'ai voulu attribuer à chacun des vœux un score qui dépendrait de plusieurs critères plus ou moins importants : un score de niveau, un score de motivation pour l'établissement et la formation, et un autre sur l'hébergement (le temps de transport entre l'hébergement probable et l'établissement).
+Pour être rigoureux j'ai voulu attribuer à chacun des vœux un score qui dépendrait de plusieurs critères plus ou moins importants : un score de niveau, un score d'intérêt pour l'établissement et la formation, et un autre sur l'hébergement (le temps de transport entre l'hébergement probable et l'établissement).
 Ainsi, il semble évident que ces différents critères de classement n'ont pas tous la même importance ; mais au-delà de cela, comment peut-on les combiner, les compiler un seul classement final.
 
 Après un bon petit moment de recherches sur Internet, de réflexion, et de trifouillage dans Geogebra, je crois avoir trouvé une méthode, avec la géométrie dans l'espace.
 Alors voilà, en quoi la géométrie dans l'espace ouvre-t-elle la voie à une nouvelle méthode d'agrégation de classements ?
 L'agrégation de classements étant le terme "juste" utilisé pour signifier ce que j'ai vulgairement appelé jusqu'ici la combinaison de classements.
 
-L'objectif de cette méthode est de donner non seulement une visualisation, mais surtout une relation qui permet, à partir de 3 classements et de pondération respectives, d'obtenir une métrique aboutissant à un classement final.
+L'objectif de cette méthode est de donner non seulement une relation qui permet, à partir de 3 classements et de pondération respectives, d'obtenir une métrique aboutissant à un classement final, mais aussi une visualisation concrète.
 
 
 ## Figure, notations et démarche
@@ -72,8 +72,7 @@ En le résolvant, on trouve la relation donnant le paramètre $t$ ; on injecte d
 Il suffit alors d'utiliser la distance algébrique pour trouver l'expression de la distance $OF=f$, notre métrique, ou score final.
 
 
-## Etude stochastique
-
+## Etude probabilistique
 Ce qu'on peut faire ensuite, c'est poser les pondérations comme des variables, et on va fixer les scores pour chaque critère.
 Ainsi, on étudie l'influence des pondérations et de leurs variations sur les classements qui en résultent.
 
@@ -92,27 +91,23 @@ La prochaine étape, c'est de colorer le point d'intersection de la base de la p
 Et ces calculs, ils ont été effectués $250000$ fois par mon ordinateur, toujours avec les données du tableau, pour aboutir au triangle coloré que pouvez voir en bas de la page.
 
 Une des premières choses qu'on remarque, c'est qu'il y a pas mal de zones ; mais combien y en a-t-il exactement ?
-Dans le cas de nos données du tableau, il y en a $19$.
+Dans notre exemple, il y en a $19$.
 
 Raisonnons de manière théorique. Quel est le nombre maximum de zones ?
 Sachant que chaque zone colorée correspond à un classement unique, il s'agit donc du nombre de permutations des éléments à classer, soit $n!$ zones possibles, où $n$ est le nombre d'éléments à classer.
+Dans notre exemple ici, notre nombre maximal de zones est $5! =120$.
 
-Mais revenons à notre exemple, et tentons de comprendre le triangle.
+On peut interpréter le nombre de zones de la sorte : il correspond à la capacité d'aboutir à un consensus sur le classement final à adopter si l'on considère un grand nombre de votants. En effet, plus il y a de zones, plus il y risque d'y avoir désaccords.
 
 J'ai écrit en légende les classements correspondant aux cinq zones les plus grosses, et vous trouverez à sa droite un graphique en barres qui représente la proportion d'aire totale occupée par chacune des plus grosses zones.
-Mais comment calculer l'aire, étant donné que nous n'avons que des points, discrets par nature ? Je me suis souvenu d'une activité faite en cours de maths l'année dernière à propos de la méthode de Monte-Carlo.
-Étant donné que les points sont placés de manière équitable partout sur le triangle, il suffit de faire le rapport de points d'une certaine couleur sur le nombre total de points pour accéder à l'aire.
-Comme prévu, la somme des valeurs du diagramme en barres total est bien égale à $1$.
+Pour calculer la proportion d'aire, j'ai adopté une méthode qui s'appelle la simulation de Monte Carlo : comme il y a un grand nombre de points ($250000$) répartis équitablement, la proportion d'aire d'une couleur donnée est approximativement égale au rapport du nombre de points de celle couleur sur le nombre de points au total.
 
-Mais maintenant, comment peut-on interpréter ce triangle ?
-
-Premièrement, ce il met en avant la solidité de certains classements, dans le sens où même si les pondérations varient, ils restent souvent optimaux.
-Même le nombre de zones est interprétable ; il correspond à la capacité d'aboutir à un consensus sur le classement final à adopter si l'on considère un grand nombre de votants. En effet, plus il y a de zones, plus il y a désaccords.
+L'aire occupée par une zone spécifique met en avant la solidité de certains classements, dans le sens où même si les pondérations varient, ils restent souvent optimaux.
 
 Dans certains contextes, il peut être aussi intéressant de prévoir vers quel classement une personne risque de changer d'avis.
-Dans notre figure ici, hors du contexte des prépas où ça n'a pas de sens, la probabilité qu'une personne passe du classement 13524 (le plus gros en jaune) au 14325 est très faible, et par des calculs, cette probabilité relative peut être quantifiée avec les distances entre les zones.
+En effet, d'après la figure, hors du contexte des prépas où ça n'a pas de sens, la probabilité qu'une personne passe du classement 13524 (le plus gros en jaune) au 14325 est très faible, et par des calculs, cette probabilité relative peut être quantifiée avec les distances entre les zones.
 
-Une dernière chose à remarquer, ce sont les lignes de séparation entre les zones, qui concrètement signifient que les 2 classements de part et d'autre conviennent de manière égale aux pondérations données par la personne.
+On peut aussi interpréter les lignes de séparation entre les zones, qui concrètement signifient que les 2 classements de part et d'autre conviennent de manière égale aux pondérations données par la personne.
 
 En outre, ça offre une représentation des choix possibles pour une personne donnée ; dans le cadre d'un traitement contre le cancer, certains patients seraient peut-être rassurés en voyant l'effet qu'ont leurs choix, à travers les pondérations, sur les traitements qu'ils devront prendre.
 

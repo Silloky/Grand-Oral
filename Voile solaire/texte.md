@@ -7,15 +7,14 @@ Une astéroïde se dirige tout droit vers la Terre et une équipe de scientifiqu
 Et une des solutions qu'ils mettent en place, c'est une voile solaire ! Mais alors, qu'est-ce qu'une voile solaire ? 
 C'est un dispositif équipé d'une grande voile qui réfléchit la lumière du Soleil, et quand il y a peu de frottements, la seule pression de la lumière permet de le faire bouger.
 
-Dès lors, comment peut-on modéliser et optimiser le mouvement d'une voile céleste propulsée uniquement par la lumière solaire ?
+Dès lors, comment peut-on modéliser et optimiser le mouvement d'une voile céleste propulsée uniquement par le rayonnement solaire ?
 
 D'abord, je vais vous expliquer la modélisation, dont je vous donne le schéma. Ensuite, nous allons tenter de trouver une expression de la force de pression de radiation qui agit sur la voile, afin de voir dans une troisième partie une une modélisation de l'évolution du rayon d'orbite de la voile.
 Et enfin, la quatrième partie sera consacrée à une analyse de cette fonction pour en déduire des optimisations possibles sur la dispositif, y compris au niveau des matériaux utilisés.
 
 ## Explication du modèle utilisé
 
-On assimile le dispositif (donc la voile et la charge qu'elle porte) à un point matériel $M$ situé & une distance $r(t)$ du Soleil, à tout instant $t$.
-L'objectif est d'obtenir l'expression de cette fonction r(t), donc de déterminer l'évolution de l'orbite.
+On assimile le dispositif (donc la voile et la charge qu'elle porte) à un point matériel $M$ situé à une distance $r(t)$ du Soleil, à tout instant $t$.
 
 On suppose que le dispositif a été préalablement éloigné de la Terre, dont il ne subit donc aucune interaction gravitationnelle.
 On imagine qu'à l'instant $t=0s$, on déploie la voile, qui était initialement pliée. A cet instant, le système se trouve sur une orbite de rayon $r_0$, et devient alors soumis à une nouvelle force, celle de la pression de radiation ; on va noter cette force $\vec{R}$.
@@ -38,35 +37,34 @@ Intuitivement, on peut se douter qu'elle dépend de la lumière qui atteint la v
 Partons déjà de la température $T$ du Soleil ; la loi de Stefan-Boltzmann, en thermodynamique, nous indique l'expression du du flux lumineux, c'est-à-dire la puissance lumineuse dégagée par un $m^2$ du Soleil. C'est la toute première expression de la feuille.
 
 Pour avoir toute l'énergie dégagée par le Soleil, il faut donc multiplier par la surface du Soleil, qu'on peut assimiler à une boule.
-On arrive à la relation n°2 de la première ligne, où $R_S$ est le rayon du Soleil.
+On arrive à la première relation de la deuxième ligne, où $R_S$ est le rayon du Soleil.
 
 Toute cette énergie, une fois qu'elle a quitté le Soleil, se répartit sur une sphère imaginaire, dont le rayon est celui de l'orbite de la voile.
 
 Donc, en posant $K_S$, et en divisant par la surface de cette sphère, on obtient l'irradiance à un rayon $r$ du Soleil : $I(r)=\frac{K_S}{r^2}$. C'est la puissance lumineuse fournie à un $m^2$ de surface à une distance $r$ du Soleil.
 
 On peut maintenant trouver une expression de la force de pression de radiation, en utilisant la quantité de mouvement.
-Car en effet la deuxième loi de Newton nous indique que la force est la dérivée temporelle de la quantité de mouvement.
-La relation de de Broglie $p=\frac{h}{\lambda}$ nous permet d'obtenir une expression de la force qui dépend du nombre de photons et de leur longueur d'onde.
+Car en effet la deuxième loi de Newton nous indique que la force est la dérivée temporelle de la quantité de mouvement, et la relation de de Broglie $p=\frac{h}{\lambda}$ nous permet d'obtenir une expression de la force qui dépend du nombre de photons et de leur longueur d'onde.
 La souci avec cette approche, c'est qu'on ne sait pas combien de photons frappent la voile par seconde, seulement l'irradiance, et le Soleil n'est pas un laser, les photons ne sont pas de la même longueur d'onde.
 
-On utilise le fait que l'énergie d'un photon vaille $E=\frac{hc}{\lambda}$ pour obtenir l'expression de la ligne ... où vous pouvez remarquer le coefficient $1+\gamma$, où $\gamma$ est la proportion de lumière réfléchie, donc la proportion de collisions dites élastiques.
-En dérivant, on obtient une expression de la force en fonction de la puissance.
+Donc on utilise le fait que l'énergie d'un photon vaille $E=\frac{hc}{\lambda}$ pour obtenir l'expression de la ligne 4 où vous pouvez remarquer le coefficient $1+\gamma$, où $\gamma$ est la proportion de lumière réfléchie, donc la proportion de collisions dites élastiques.
+En dérivant, on obtient une expression de la force en fonction de la puissance ; c'est la ligne 5.
 
-Vous pouvez trouver l'expression de cette puissance sur la ligne ... ; c'est une intégration d'un produit scalaire par la surface de la voile $A$.
-Le vecteur $\vec{S}$ est le vecteur de Poynting, et il a pour expression $I(r)\cdot \vec{u}_r$.
+L'expression de cette puissance est juste en-dessous, et remarquons qu'il s'agit de l'intégration d'un produit scalaire par la surface de la voile $A$.
+Le vecteur $\vec{S}$ est d'ailleurs appelé vecteur de Poynting, et il a pour expression $I(r)\cdot \vec{u}_r$.
 Et donc on aboutit à l'expression de l'intensité de la force $\vec{R}$.
 
-On pose maintenant $I$ (qui n'est pas l'irradiance de plus tôt, dont on ne se resservira pas), et on peut décomposer la force selon les vecteurs unitaires pour obtenir ce que vous avez sur la ligne 3.
+On pose maintenant $I$ (qui n'est pas l'irradiance de plus tôt, dont on ne se resservira pas), et on peut décomposer la force selon les vecteurs unitaires pour obtenir ce que vous avez sur la ligne 7.
 
 
 ## Etude énergétique du système
 
 Maintenant qu'on a l'expression de cette force, on va réaliser une étude énergétique du système, en notant la masse du Soleil $M_S$ et la masse du dispositif $m$.
-On détermine d'abord l'expression de l'énergie mécanique.
+On détermine d'abord l'expression de l'énergie mécanique, à la ligne 8.
 
 De plus, la puissance mécanique est égale au produit scalaire de $\vec{R}$ et de la vitesse, qu'on peut décomposer selon les vecteurs unitaires.
 De plus, puisque la trajectoire est quasi-circulaire, la vitesse radiale est par définition négligeable.
-Et enfin, puisque la puissance mécanique est égale à la dérivée temporelle de l'énergie mécanique, on obtient ce qu'il y  a écrit à la ligne 9
+Et enfin, puisque la puissance mécanique est égale à la dérivée temporelle de l'énergie mécanique, on obtient ce qu'il y  a écrit à la ligne 9.
 
 ## Vers une expression pour $r$
 
@@ -95,7 +93,7 @@ En dérivant cette nouvelle fonction, dont vous pouvez trouver la courbe au vers
 
 ## Convergence ou divergence
 
-D'autre part, plus tôt dans la démonstration, à la ligne ..., on avait l'expression de la dérivée temporelle de $r$.
+D'autre part, plus tôt dans la démonstration, à la ligne 11, on avait l'expression de la dérivée temporelle de $r$.
 Ce qu'on y remarque maintenant, c'est que le signe de $\frac{dr}{dt}$ est le signe de $\sin\alpha$ car tout le reste est positif.
 Par étude de la fonction $\sin$, on peut en déduire que lorsque $\alpha$ est compris entre $-90^o$ et $0^o$, $r$ est décroissante, et donc le dispositif se rapproche du Soleil, et la trajectoire est une spirale convergente, alors que lorsque $\alpha$ est compris entre $0^o$ et $90^o$, $r$ est croissante et la trajectoire est une spirale divergente.
 Je rappelle que cet angle est mesuré dans le sens trigonométrique du point de vue de la voile.
